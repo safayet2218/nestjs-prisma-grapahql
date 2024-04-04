@@ -1,0 +1,15 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateCategoryInput {
+  name: String!
+}
+
+type Mutation {
+  createCatgory(data: CreateCategoryInput!): String!
+}
+
+type Query {
+  getAllCategories: String!
+}
