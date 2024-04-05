@@ -4,6 +4,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { CategoryModule } from './category/category.module';
 import { PrismaService } from './libs/prisma/prisma.service';
+import { AnyExceptionFilter } from './libs/exception/exception-filter';
+import { APP_FILTER } from '@nestjs/core';
 // import { schemaDestination } from './graphql/schema.gql';
 
 
@@ -18,6 +20,9 @@ import { PrismaService } from './libs/prisma/prisma.service';
       CategoryModule,
   ],
   controllers: [],
-  providers: [PrismaService],
+  providers: [{
+    provide: APP_FILTER,
+    useClass: AnyExceptionFilter,
+  },PrismaService],
 })
 export class AppModule {}

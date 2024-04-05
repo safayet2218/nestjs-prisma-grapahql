@@ -1,3 +1,4 @@
+import { BadRequestException } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { registerDecorator, ValidationOptions } from 'class-validator';
 
@@ -41,12 +42,12 @@ export class IsUniqueConstraint implements ValidatorConstraintInterface {
       [column]:value
     }})
 
-    console.log(args,tableName,column,value,data)
     return !data;
   }
 
   defaultMessage(args?: ValidationArguments): string {
-    // return `${args.property} ` + 'already exists.';
+    // throw new BadRequestException('already exists.');
+    return `${args.property} ` + 'already exists.';
     throw new Error('fgkdfg')
   }
 }
