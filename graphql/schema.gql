@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type CategoryModel {
+  id: Int!
+  name: String!
+}
+
 input CreateCategoryInput {
   name: String!
 }
@@ -11,5 +16,5 @@ type Mutation {
 }
 
 type Query {
-  getAllCategories: String!
+  getAllCategories: [CategoryModel!]!
 }

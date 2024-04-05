@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 
 import { PrismaService } from "src/libs/prisma/prisma.service";
+import { CategoryModel } from "./category.model";
 
 export let PrismaClient: PrismaService;
 interface CreateCategoryInput {
@@ -11,9 +12,9 @@ interface CreateCategoryInput {
 export class CategoryService {
     constructor(private readonly prisma: PrismaService) { }
     
-    async getCategoryies() {
+    async getCategoryies():Promise<CategoryModel[]> {
         try {
-            const categoryList =await this.prisma.category.findFirst();
+            const categoryList:CategoryModel[] = await this.prisma.category.findMany();
 
             return categoryList;
         } catch (e) {
