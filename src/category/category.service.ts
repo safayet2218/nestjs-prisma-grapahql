@@ -22,15 +22,15 @@ export class CategoryService {
         }
     }
 
-    async createCatgory(data: CreateCategoryInput) {
+    async createCatgory(data: CreateCategoryInput): Promise<CategoryModel> {
         try {
-            await this.prisma.category.create({
+            const category = await this.prisma.category.create({
                 data: {
                    name:data.name
                }
             }) 
             
-            return 'done'
+            return category
         }catch (e) {
             console.log(e)
         }
@@ -44,6 +44,22 @@ export class CategoryService {
                 }
             })
             return categoryDetails;
+        }catch (e) {
+            console.log(e)
+        }
+    }
+
+    async updateCategory(id: number, name: string) {
+        try {
+            const updateCategory = await this.prisma.category.update({
+                where: {
+                    id:id
+                },
+                data: {
+                    name:name
+                }
+            })
+            return updateCategory;
         }catch (e) {
             console.log(e)
         }

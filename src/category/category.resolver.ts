@@ -12,13 +12,19 @@ export class CategoryResolver {
     return await this.categoryService.getCategoryies();
   }
 
-  @Mutation(() => String)
-  async createCatgory(@Args('data') data: CreateCategoryInput) {
+  @Mutation(() => CategoryModel)
+  async createCatgory(@Args('data') data: CreateCategoryInput): Promise<CategoryModel> {
     return await this.categoryService.createCatgory(data);
   }
 
   @Mutation(() => CategoryModel)
   async getCategoryDetails(@Args('id') id: number): Promise<CategoryModel> {
     return await this.categoryService.getCategoryDetails(id);
+  }
+
+  @Mutation(() => CategoryModel)
+  async updateCategory(@Args('id') id: number, @Args('name') name: string)
+  {
+    return await this.categoryService.updateCategory(id, name);
   }
 }

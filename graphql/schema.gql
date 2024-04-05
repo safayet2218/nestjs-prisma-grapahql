@@ -12,8 +12,9 @@ input CreateCategoryInput {
 }
 
 type Mutation {
-  createCatgory(data: CreateCategoryInput!): String!
+  createCatgory(data: CreateCategoryInput!): CategoryModel!
   getCategoryDetails(id: Float!): CategoryModel!
+  updateCategory(id: Float!, name: String!): CategoryModel!
 }
 
 type Query {
