@@ -16,4 +16,9 @@ export class CategoryResolver {
   async createCatgory(@Args('data') data: CreateCategoryInput) {
     return await this.categoryService.createCatgory(data);
   }
+
+  @Mutation(() => CategoryModel)
+  async getCategoryDetails(@Args('id') id: number): Promise<CategoryModel> {
+    return await this.categoryService.getCategoryDetails(id);
+  }
 }

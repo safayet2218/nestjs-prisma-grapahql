@@ -35,5 +35,18 @@ export class CategoryService {
             console.log(e)
         }
     }
+
+    async getCategoryDetails(id: number): Promise<CategoryModel> {
+        try {
+            const categoryDetails = await this.prisma.category.findFirst({
+                where: {
+                    id:id
+                }
+            })
+            return categoryDetails;
+        }catch (e) {
+            console.log(e)
+        }
+    }
     
 }
