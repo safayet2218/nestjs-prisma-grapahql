@@ -2,12 +2,10 @@ import { Injectable } from "@nestjs/common";
 
 import { PrismaService } from "src/libs/prisma/prisma.service";
 import { CategoryModel } from "./category.model";
+import { CreateCategoryInput } from "./create-category.dto";
 
 export let PrismaClient: PrismaService;
-interface CreateCategoryInput {
-    name: string; // Add relevant properties based on your data structure
-}
-  
+ 
 @Injectable()
 export class CategoryService {
     constructor(private readonly prisma: PrismaService) { }
@@ -49,14 +47,14 @@ export class CategoryService {
         }
     }
 
-    async updateCategory(id: number, name: string) {
+    async updateCategory(id: number, data: CreateCategoryInput) {
         try {
             const updateCategory = await this.prisma.category.update({
                 where: {
                     id:id
                 },
                 data: {
-                    name:name
+                    name:data.name
                 }
             })
             return updateCategory;

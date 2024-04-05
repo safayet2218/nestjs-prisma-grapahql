@@ -23,8 +23,8 @@ export class CategoryResolver {
   }
 
   @Mutation(() => CategoryModel)
-  async updateCategory(@Args('id') id: number, @Args('name') name: string)
+  async updateCategory(@Args('id') id: number, @Args('data') data: CreateCategoryInput)
   {
-    return await this.categoryService.updateCategory(id, name);
+    return await this.categoryService.updateCategory(id, data);
   }
 }

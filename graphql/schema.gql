@@ -14,7 +14,7 @@ input CreateCategoryInput {
 type Mutation {
   createCatgory(data: CreateCategoryInput!): CategoryModel!
   getCategoryDetails(id: Float!): CategoryModel!
-  updateCategory(id: Float!, name: String!): CategoryModel!
+  updateCategory(data: CreateCategoryInput!, id: Float!): CategoryModel!
 }
 
 type Query {
